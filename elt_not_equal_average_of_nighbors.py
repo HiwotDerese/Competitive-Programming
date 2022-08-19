@@ -1,5 +1,5 @@
 class Solution:
-    def rearrangeArray(self, nums: List[int]) -> List[int]:
+    def rearrangeArray(self, nums: list[int]) -> list[int]:
         for i in range(1,len(nums)-1, 1):
             if i == len(nums):
                 break
