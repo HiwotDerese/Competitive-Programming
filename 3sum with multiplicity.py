@@ -1,25 +1,28 @@
 class Solution:
     def threeSumMulti(self, arr: List[int], target: int) -> int:
-        arr.sort()
+        unique = list(set(arr))
+        unique.sort()
         hashT = Counter(arr)
-        ans, i, n = 0, 0, len(arr)
-        while i < n:
-            left, right = i, n-1 
-            while left < right: 
-                if arr[i] + arr[left] + arr[right] < target:
-                    left += hashT[arr[left]]
-                elif arr[i] + arr[left] + arr[right] > target:
-                    right -= hashT[arr[right]]
+        i, ans = 0, 0
+        while i < len(unique):
+            left, right = i, len(unique) - 1
+            target2 = target - unique[i]
+            while left <= right:
+                if unique[left] + unique[right] > target2:
+                    right -= 1
+                elif unique[left] + unique[right] < target2:
+                    left += 1
                 else:
-                    if arr[i] != arr[left] != arr[right]:
-                        ans += hashT[arr[i]] * hashT[arr[left]] * hashT[arr[right]]
-                    elif arr[i] == arr[left] != arr[right]:
-                        ans += hashT[arr[i]] * (hashT[arr[i]]-1) * hashT[arr[right]]//2 
-                    elif arr[i] != arr[left] == arr[right]:
-                        ans += hashT[arr[i]] * hashT[arr[left]] * (hashT[arr[left]]-1)//2
+                    if unique[i] != unique[left] != unique[right]:
+                        ans += hashT[unique[i]] * hashT[unique[left]] * hashT[unique[right]]
+                    elif unique[i] == unique[left] != unique[right]:
+                        ans += hashT[unique[i]] * (hashT[unique[i]] - 1) * hashT[unique[right]] // 2
+                    elif unique[i] != unique[left] == unique[right]:
+                        ans += hashT[unique[i]] * hashT[unique[left]] * (hashT[unique[right]] - 1) // 2
                     else:
-                        ans += hashT[arr[i]] * (hashT[arr[i]]-1) * (hashT[arr[i]]-2)//6
-                    left += hashT[arr[left]]
-                    right -= hashT[arr[right]]
-            i += hashT[arr[i]]
+                        ans += hashT[unique[i]] * (hashT[unique[i]]-1) * (hashT[unique[i]]-2)//6
+                        
+                    left += 1
+                    right -= 1
+            i += 1
         return ans % (10 ** 9 + 7)
