@@ -11,6 +11,7 @@ class Solution:
             if queries[i][0] == 0:
                 ans.append(xorArr[queries[i][1]])
             else:
+                
                 # print(start)
                 ans.append(xorArr[queries[i][1]] ^ xorArr[queries[i][0] - 1])
         return ans
