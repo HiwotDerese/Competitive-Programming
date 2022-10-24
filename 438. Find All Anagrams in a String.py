@@ -2,6 +2,7 @@ class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
         if len(s) < len(p):
             return []
+            
         hash1 = OrderedDict((i,0) for i in ascii_lowercase)
         hash2 = OrderedDict((i,0) for i in ascii_lowercase)
         ans = []
