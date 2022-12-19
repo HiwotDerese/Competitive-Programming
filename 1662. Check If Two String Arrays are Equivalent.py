@@ -11,4 +11,3 @@ class Solution:
         if firstWord == secondWord:
             return True
         return False
-                
