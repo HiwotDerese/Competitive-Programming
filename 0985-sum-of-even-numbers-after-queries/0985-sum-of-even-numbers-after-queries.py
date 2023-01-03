@@ -13,18 +13,19 @@ class Solution:
             index = queries[i][1]
             if nums[index] % 2 == 0 and (nums[index] + queries[i][0]) % 2 == 0:
                 sums += queries[i][0]
-                nums[index] += queries[i][0]
+                # nums[index] += queries[i][0]
             elif nums[index] % 2 == 0 and (nums[index] + queries[i][0]) % 2 != 0:
                 sums -= nums[index]
-                nums[index] += queries[i][0]
+                # nums[index] += queries[i][0]
             elif nums[index] % 2 != 0 and (nums[index] + queries[i][0]) % 2 != 0:
-                nums[index] += queries[i][0]
+                # nums[index] += queries[i][0]
                 # sums += nums[index] + queries[i][0]
                 pass
             else:
                 sums += nums[index] + queries[i][0]
-                nums[index] += queries[i][0]
+                # nums[index] += queries[i][0]
             answer.append(sums)
+            nums[index] += queries[i][0]
 
                 
             # print(nums)   
