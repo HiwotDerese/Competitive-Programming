@@ -11,45 +11,25 @@ class Solution:
         
         for i in range(leng):
             index = queries[i][1]
-            if nums[index] % 2 == 0 and (nums[index] + queries[i][0]) % 2 == 0:
+            even = nums[index] % 2 == 0
+            added = (nums[index] + queries[i][0])
+            
+            if even and added % 2 == 0:
                 sums += queries[i][0]
-                # nums[index] += queries[i][0]
-            elif nums[index] % 2 == 0 and (nums[index] + queries[i][0]) % 2 != 0:
+                
+            elif even and added % 2 != 0:
                 sums -= nums[index]
-                # nums[index] += queries[i][0]
-            elif nums[index] % 2 != 0 and (nums[index] + queries[i][0]) % 2 != 0:
-                # nums[index] += queries[i][0]
-                # sums += nums[index] + queries[i][0]
+                
+            elif not even and added % 2 != 0:
                 pass
+            
             else:
-                sums += nums[index] + queries[i][0]
-                # nums[index] += queries[i][0]
+                sums += added
+                
             answer.append(sums)
             nums[index] += queries[i][0]
-
-                
-            # print(nums)   
-            # print(answer)
-            
-            
+ 
+ 
         return answer
         
-
-# class Solution:
-#     def sumEvenAfterQueries(self, nums: List[int], queries: List[List[int]]) -> List[int]:
-        
-#         answer = []
-#         leng = len(nums)
-        
-#         for i in range(leng):
-#             index = queries[i][1]
-#             nums[index] += queries[i][0]
-            
-#             sums = 0
-#             for i in range(leng):
-#                 if nums[i] % 2 == 0:
-#                     sums += nums[i]
-
-#             answer.append(sums)
-#         return answer
         
