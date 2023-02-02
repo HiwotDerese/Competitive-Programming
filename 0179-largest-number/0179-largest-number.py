@@ -16,6 +16,7 @@ class Solution:
             nums[i] = str(nums[i])
         
         ans = "".join(nums)
+#         for cases like [0, 0] 
         ans = str(int("".join(nums)))
         
         return ans
