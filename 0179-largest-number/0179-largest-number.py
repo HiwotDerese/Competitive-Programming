@@ -1,13 +1,21 @@
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
         
-        for i in range(len(nums), 0, -1):
+        leng = len(nums)
+        for i in range(leng, 0, -1):
+            
             for j in range(i-1):
                 
-                if not str(nums[j]) + str(nums[j+1]) > str(nums[j+1]) + str(nums[j]):
+                num1 = str(nums[j]) + str(nums[j+1])
+                num2 = str(nums[j+1]) + str(nums[j])
+                
+                if num1 < num2:
                     nums[j], nums[j+1] = nums[j+1], nums[j]
-                    
-        return str(int("".join(map(str, nums))))
-
-        # def compare(self, n1, n2):
-        #     return str(nums[j]) + str(nums[j+1]) > str(nums[j+1]) + str(nums[j])
+        
+        for i in range(leng):
+            nums[i] = str(nums[i])
+        
+        ans = "".join(nums)
+        ans = str(int("".join(nums)))
+        
+        return ans
