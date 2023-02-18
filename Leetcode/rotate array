@@ -1,0 +1,27 @@
+from math import ceil
+
+
+def rotate(nums, k) -> None:
+    """
+    Do not return anything, modify nums in-place instead.
+    """
+    n = len(nums) 
+    k = k % n
+    
+    if k==0:
+        return
+            
+    left = 0
+    for _ in range(n//k):
+        right = n - k
+        swap_cnt = min(right - left, n - right)
+        right = n - k
+        for _ in range(swap_cnt):
+            nums[left], nums[right] = nums[right], nums[left]
+            left+=1
+            right+=1
+
+
+nums = [i for i in range(1, 28)]
+rotate(nums, 38)
+print(nums)
