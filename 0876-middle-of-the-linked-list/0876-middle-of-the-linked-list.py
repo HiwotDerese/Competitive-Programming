@@ -20,25 +20,23 @@ class Solution:
 #         return head
     
     
-        curr = head
-        arr = []
-        while curr:
-            arr.append(curr)
-            curr = curr.next
+#         curr = head
+#         arr = []
+#         while curr:
+#             arr.append(curr)
+#             curr = curr.next
             
-        return arr[len(arr) // 2]
+#         return arr[len(arr) // 2]
          
             
     
     
         
+        slow = head
+        while head and head.next:
+            slow = slow.next
+            head = head.next.next
             
-        
-        
-        
-        # tail = head
-        # while head and head.next:
-        #     tail = tail.next
-        #     head = head.next.next
-        # return tail
+        return slow
+    
         
