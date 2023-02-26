@@ -10,7 +10,6 @@ class Solution:
         
         for right in range(leng):
             dic[s[right]] += 1
-            _max = max(dic.values())
             
             while (right - left + 1) - (max(dic.values())) > k:
                 dic[s[left]] -= 1
