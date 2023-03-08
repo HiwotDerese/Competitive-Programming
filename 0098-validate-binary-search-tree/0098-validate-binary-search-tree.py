@@ -6,41 +6,57 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        
-        def inorder(root):
+        def isValid(root, lower, upper):
+            
             if not root:
-                return
+                return True
             
-            inorder(root.left)
-            if root:
-                ans.append(root.val)
-            inorder(root.right)
-        
-        ans = []
-        inorder(root)
-        
-        if len(ans) == 1:
-            return True
-        
-        i, leng = 1, len(ans)
-        while i < leng:
+            if (root.val <= lower) or (root.val >= upper):
+                return False
             
-            if (i + 1) < leng:
-                if ans[i - 1] < ans[i] and ans[i + 1] > ans[i]:
-                    i += 2
+            validLeft = isValid(root.left, lower, root.val)
+            validRight = isValid(root.right, root.val, upper)
+            
+            return validLeft and validRight
+            
+            
+            
+        
+        return isValid(root, -float('inf'), float('inf'))
+#         def inorder(root):
+#             if not root:
+#                 return
+            
+#             inorder(root.left)
+#             if root:
+#                 ans.append(root.val)
+#             inorder(root.right)
+        
+#         ans = []
+#         inorder(root)
+        
+#         if len(ans) == 1:
+#             return True
+        
+#         i, leng = 1, len(ans)
+#         while i < leng:
+            
+#             if (i + 1) < leng:
+#                 if ans[i - 1] < ans[i] and ans[i + 1] > ans[i]:
+#                     i += 2
                     
-                else:
-                    return False
+#                 else:
+#                     return False
                     
 
-            elif ans[i - 1] < ans[i]:
-                i += 2
+#             elif ans[i - 1] < ans[i]:
+#                 i += 2
                 
-            else:
-                return False
+#             else:
+#                 return False
                 
             
-        return True
+#         return True
     
     
 
