@@ -1,30 +1,52 @@
 class Solution:
-    def backtrack(self, a, arr, n, k):
-        
-        #base case
-        if len(arr) == k:
-            copy = arr[::]
-            self.ans.append(copy)
-            return
-
-        #loop through all candidates
-        for i in range(a,n+1):
-            
-            #place 
-            arr.append(i)
-    
-            #call recursive function
-            self.backtrack(i+1, arr, n, k)
-    
-            #remove
-            arr.pop()
                 
     def combine(self, n, k):
-        self.ans = []
+        
+        def backtrack(a, arr, n, k):
+        
+        #base case
+            if len(arr) == k:
+                copy = arr[::]
+                ans.append(copy)
+                return
+
+            #loop through all candidates
+            for i in range(a,n+1):
+
+                #place 
+                arr.append(i)
+
+                #call recursive function
+                backtrack(i+1, arr, n, k)
+
+                #remove
+                arr.pop()
+        
+        
+        
+        
+        
+        ans = []
         arr = []
         
-        self.backtrack(1, arr, n, k)
-        return self.ans
+        backtrack(1, arr, n, k)
+        return ans
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -46,28 +68,7 @@ class Solution:
 #         helper([], 1, k)
 
 #         return ans
-    
-    
-# class Solution(object):
-#     def combine(self, n, k, ans = []):
-#         # ans = []
 
-#         def backtrack(a,arr):
-#             if len(arr) == k:
-#                 print(ans)
-                
-#                 ans.append(arr)
-#                 return
-
-#             for i in range(a,n+1):
-#                 arr.append(i)
-                
-#                 backtrack(i+1,arr)
-                
-#                 arr.pop()
-
-#         backtrack(1,[])
-#         return ans
     
     
     
