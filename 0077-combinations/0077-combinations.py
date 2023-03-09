@@ -1,59 +1,81 @@
 class Solution:
-    def combine(self, n: int, k: int) -> List[List[int]]:
+    def backtrack(self, a, arr, n, k):
         
-#         def backtrack(num, candidate, k, ans):
+        #base case
+        if len(arr) == k:
+            copy = arr[::]
+            self.ans.append(copy)
+            return
+
+        #loop through all candidates
+        for i in range(a,n+1):
             
-#             if len(candidate) == k - 1:
-#                 comb = candidate
-#                 comb.insert(0, num)
-#                 # print('aaaaa')
-#                 ans.append(comb)
-#                 # print(ans)
-#                 return 
+            #place 
+            arr.append(i)
+    
+            #call recursive function
+            self.backtrack(i+1, arr, n, k)
+    
+            #remove
+            arr.pop()
                 
-                
-#             for i in range(len(candidate)):
-#                 print(candidate, 'candidate', num)
-#                 if len(candidate) >= k:
-#                     backtrack(candidate[i], candidate[i+1:], k, ans)
-                    
+    def combine(self, n, k):
+        self.ans = []
+        arr = []
         
+        self.backtrack(1, arr, n, k)
+        return self.ans
+    
+    
+    
+    
+    
+#     def combine(self, n: int, k: int) -> List[List[int]]:
 #         ans = []
-#         arr = []
-        
-#         for i in range(n):
-#             arr.append(i + 1)
-            
-#         backtrack(arr[0], arr[1:], k, [])
-        
-#         return ans
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        ans = []
 
-        def helper(combination, start, remaining_slots):
-            if remaining_slots == 0:
-                ans.append(combination)
+#         def helper(combination, start, remaining_slots):
+#             if remaining_slots == 0:
+#                 ans.append(combination)
                 
-            else:
-                for num in range(start, n + 1):
-                    helper(combination + [num], num + 1, remaining_slots - 1)
+#             else:
+#                 for num in range(start, n + 1):
+#                     helper(combination + [num], num + 1, remaining_slots - 1)
                     
-            # print(ans)
+#             # print(ans)
 
-        helper([], 1, k)
+#         helper([], 1, k)
 
-        return ans
+#         return ans
+    
+    
+# class Solution(object):
+#     def combine(self, n, k, ans = []):
+#         # ans = []
+
+#         def backtrack(a,arr):
+#             if len(arr) == k:
+#                 print(ans)
+                
+#                 ans.append(arr)
+#                 return
+
+#             for i in range(a,n+1):
+#                 arr.append(i)
+                
+#                 backtrack(i+1,arr)
+                
+#                 arr.pop()
+
+#         backtrack(1,[])
+#         return ans
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
