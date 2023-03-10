@@ -11,7 +11,7 @@ class Solution:
             
             distribution[i] += cookies[index]
             
-            if max(distribution) < min_unfairness:
+            if distribution[i] < min_unfairness:
                 min_unfairness = min(min_unfairness, self.fairD(distribution, index + 1, cookies, k))
             
             # print(distribution)
