@@ -39,9 +39,8 @@ class Solution:
         
         index, self._max, self._min = 0, -float('inf'), float('inf')
         distribution = [0] * k
-        # print(distribution)
-        cookies.sort()
-        return self.fairD(distribution, index, cookies, k)
+        
+        return self.fairD(distribution, index, sorted(cookies, reverse=True), k)
         
         
         
