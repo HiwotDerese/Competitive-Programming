@@ -7,12 +7,10 @@
 class Solution:
     
     def path(self, root, one_path, ans):
-        # print(one_path, root)
         if not root.left and not root.right:
-            # one_path += str(root.val)
-            # ans.append(one_path)
-            ans.append(one_path[::] + [str(root.val)])
-            # print(ans, root.val)
+            
+            ans.append(one_path + [str(root.val)])
+
             return ans
         
         else:
@@ -23,20 +21,12 @@ class Solution:
                 candidates.append(root.right)
 
             for i in (candidates):
-                
-                # print(root.val)
-                # print(one_path)
                 one_path += [str(root.val)]
-                # print(one_path)
-                self.path(i, one_path, ans)
-                one_path.pop()
-                # print(root.val)
-                # print(one_path)
-                # if root.val < 0:
-                #     one_path = one_path[:len(one_path) - 4]
-                # else:
-                #     one_path = one_path[:len(one_path) - 3]
 
+                self.path(i, one_path, ans)
+                
+                one_path.pop()
+            print(ans)
             return [ *map('->'.join, ans) ]
                 
 
