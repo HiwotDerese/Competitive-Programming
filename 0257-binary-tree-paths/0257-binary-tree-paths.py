@@ -26,7 +26,7 @@ class Solution:
                 self.path(i, one_path, ans)
                 
                 one_path.pop()
-            print(ans)
+                
             return [ *map('->'.join, ans) ]
                 
 
