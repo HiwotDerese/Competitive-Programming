@@ -1,38 +1,28 @@
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
-        idx = leng = len(nums)
-        # nums.append(-1)
         
-        index = 0
-        while index < len(nums):
-            # print(index, nums)
-            if nums[index] == index + 1:
-                index += 1
-                
-            elif nums[index] == 'first':
-                index += 1
-                
-            elif nums[index] < 1 or nums[index] > leng:
-                nums[index] = 'first'
-                index += 1
-                
-            else:
-                if nums[nums[index] - 1] == nums[index]:
-                    nums[index] = 'first'
+        def sortt(nums) -> int:
+            idx = len(nums)
+
+            index = 0
+            while index < len(nums):
+                if nums[index] == index + 1 or nums[index] < 1 or nums[index] >= len(nums):
                     index += 1
+                elif nums[nums[index] - 1] == nums[index]:
+                    index += 1
+
                 else:
-                # print(index, nums[index], nums[nums[index] - 1])
                     nums[nums[index] - 1], nums[index] = nums[index], nums[nums[index] - 1]
-                # if nums[index] == len(nums):
-                #     idx = index
-                # elif nums[nums[index]] == len(nums):
-                #     idx = index
+
+            return idx
         
-        for i in range(leng):
-            if nums[i] == 'first':
+        sortt(nums)
+        n = len(nums)
+        for i in range(n):
+            if nums[i] != i + 1:
                 return i + 1
-            
-        return leng + 1
+
+        return n + 1
                
         
         
