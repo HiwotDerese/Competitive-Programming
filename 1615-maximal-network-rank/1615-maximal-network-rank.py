@@ -22,24 +22,9 @@ class Solution:
                     res -= 1
                 
                 ans = max(ans, res)
-                
-                
+                   
         return ans
-        # print(graph)
-        # res = sorted(graph, key = lambda key: len(graph[key]))
 
-#         pair1 = graph[res[-1]]
-#         pair2 = graph[res[-2]]
-#         print(pair1, pair2, graph, res)
-#         ans = len(pair1) + len(pair2)
-
-#         if res[-1] in pair2:
-#             return ans - 1
-        
-#         return ans
-        
-        
-        
         
         
         
