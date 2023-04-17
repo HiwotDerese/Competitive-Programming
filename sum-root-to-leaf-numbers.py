@@ -7,6 +7,8 @@
 class Solution:
 
     def paths(self, root, arr):
+        if not root:
+            return
 
         if not root.left and not root.right:
             arr += [str(root.val)]
@@ -15,16 +17,10 @@ class Solution:
             self.ans += int(num)
 
             return
-
-        arr.append(str(root.val))
         
-        if root.left:
-            self.paths(root.left, arr)
-            arr.pop()
+        self.paths(root.left, arr + [str(root.val)])
 
-        if root.right:
-            self.paths(root.right, arr)
-            arr.pop()
+        self.paths(root.right, arr + [str(root.val)])
 
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
         self.ans = 0
