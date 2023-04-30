@@ -33,7 +33,7 @@ class Solution:
     def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
         if not root.left and not root.right:
             return []
-            
+
         graph = defaultdict(list)
 
         def adj(root):
@@ -50,7 +50,4 @@ class Solution:
 
         adj(root)
 
-        for node in graph:
-            if node == target.val:
-                return self.bfs(node, graph, k)
-                break
+        return self.bfs(target.val, graph, k)
