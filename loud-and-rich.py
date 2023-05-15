@@ -1,6 +1,6 @@
 class Solution:
 
-    def dfs(self, num, minm, adj, quiet):
+    def bfs(self, num, minm, adj, quiet):
         queue = deque([num])
         visited = set([num])
 
@@ -25,7 +25,7 @@ class Solution:
 
         for i in range(n):
             if i in adj:
-                min_ = self.dfs(i, i, adj, quiet)
+                min_ = self.bfs(i, i, adj, quiet)
                 ans.append(min_)
 
             else:
