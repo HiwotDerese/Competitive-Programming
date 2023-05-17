@@ -33,13 +33,13 @@ class Solution:
 
         n = len(s1)
         for i in range(n):
-            self.union(ord(s1[i]) - ord('a'), ord(s2[i]) - ord('a'))
+            self.union(ord(s1[i]) - 97, ord(s2[i]) - 97)
 
         m = len(baseStr)
         ans = ""
 
         for i in range(m):
-            root = self.find(ord(baseStr[i]) - ord('a'))
-            ans += chr(self.minimum[root] + ord('a'))
+            root = self.find(ord(baseStr[i]) - 97)
+            ans += chr(self.minimum[root] + 97)
 
         return ans
