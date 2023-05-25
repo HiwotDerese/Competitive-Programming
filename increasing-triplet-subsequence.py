@@ -1,15 +1,12 @@
 class Solution:
     def increasingTriplet(self, nums: List[int]) -> bool:
-        min_arr, max_arr, n, min_, max_ = [inf], [-inf], len(nums), inf, -inf
-        
-        for idx in range(n):
-            min_ = min(min_, nums[idx])
-            max_ = max(max_, nums[-(idx + 1)])
-            min_arr.append(min_)
-            max_arr.append(max_)
+        n = len(nums)
+        min_, max_= [inf], [-inf]*n
 
-        max_arr.sort(reverse = True)
+        for idx in range(1, n):
+            min_.append(min(min_[-1], nums[idx - 1]))
+            max_[-(idx + 1)] = max(max_[-idx], nums[-idx])
 
         for idx in range(n):
-            if min_arr[idx] < nums[idx] < max_arr[idx]:
+            if min_[idx] < nums[idx] < max_[idx]:
                 return True
