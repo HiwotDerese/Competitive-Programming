@@ -21,11 +21,11 @@ def union(x, y):
 
     if rank[root_x] > rank[root_y]:
         parent[root_y] = root_x
-        members[root_x] += 1
+        members[root_x] += members[root_y]
 
     else:
         parent[root_x] = root_y
-        members[root_y] += 1
+        members[root_y] += members[root_x]
 
 for _ in range(m):
     group = list(map(int, input().split()))
@@ -40,6 +40,3 @@ for i in range(n):
     ans.append(str(members[root]))
 
 print(' '.join(ans))
-
-
-
