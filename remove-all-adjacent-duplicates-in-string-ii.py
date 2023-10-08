@@ -16,8 +16,6 @@ class Solution:
         ans = ""
 
         for idx in range(len(stack)):
-
-            for i in range(stack[idx][1]):
-                ans += stack[idx][0]
+            ans += stack[idx][0] * stack[idx][1]
 
         return ans
