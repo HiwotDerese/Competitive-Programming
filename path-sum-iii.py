@@ -12,6 +12,7 @@ class Solution:
         self.sum = 0
 
         def backtrack(node):
+            # print(dic)
             if not node:
                 return
             # print(node.val, self.sum)
@@ -19,6 +20,7 @@ class Solution:
             # print(node.val, self.sum)
 
             if self.sum - targetSum  in dic:
+                # print(self.ans, self.sum, "anssss")
                 self.ans += dic[self.sum - targetSum]
 
             dic[self.sum] += 1
