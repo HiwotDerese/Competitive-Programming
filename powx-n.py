@@ -1,0 +1,19 @@
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+
+        def pow(x, n):
+            if n == 0:
+                return 1
+
+            else:
+                ans = pow(x, n // 2)
+                ans = ans * ans
+
+                return  x * ans if n%2  else ans
+
+        if x == 0:
+            return 0
+
+        ans = pow(x, abs(n))
+
+        return ans if n >= 0 else 1 / ans
